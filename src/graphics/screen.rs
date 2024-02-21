@@ -4,7 +4,7 @@ use super::objects::{ActiveObjects, Object};
 pub struct Screen {
     width: usize,
     height: usize,
-    pixels: Vec<Vec<ColoredCharacter>>
+    pixels: Vec<Vec<ColoredCharacter>> // First Vec is Y axis, second X axis, third Z axis
 }
 
 impl Screen {
@@ -31,13 +31,13 @@ impl Screen {
         }
     }
 
-    pub fn destroy(&mut self, objects: ActiveObjects, name: &str) {
-        for obj in objects {
-            if obj.name() == name {
-                // Do something
-            }
-        }
-    }
+    //pub fn destroy(&mut self, objects: ActiveObjects, name: &str) {
+    //    for obj in objects {
+    //        if obj.name() == name {
+    //            // Do something
+    //        }
+    //    }
+    //}
 
     pub fn render(&mut self, objects: ActiveObjects) {
         // Clear the screen

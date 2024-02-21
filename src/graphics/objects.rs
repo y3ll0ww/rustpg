@@ -1,4 +1,4 @@
-use super::characters::ColoredCharacter;
+use super::characters::{Color, ColoredCharacter};
 
 pub struct ActiveObjects {
     objects: Vec<Object>
@@ -50,6 +50,29 @@ impl Object {
             y: 0,
             level: 0,
             body
+        }
+    }
+
+    pub fn from_str(name: String, body: String, level: usize, x: usize, y: usize, color: Color) -> Self {
+        let mut result = Vec::new();
+
+        let rows = body.split("\n");
+        for row in rows {
+            let mut r = Vec::new();
+
+            for c in row.chars() {
+                r.push(ColoredCharacter::new(c, color.clone(), level));
+            }
+
+            result.push(r);
+        }
+
+        Self {
+            name,
+            x,
+            y,
+            level,
+            body: result
         }
     }
 
